@@ -3,7 +3,7 @@
 
 A framework that allows to build mirofrontends. Its feature includes:
 1. Mounting UI applications using most UI frameworks as Angular, React, Vue, AngularJS, Svelte, Alpine etc (See [here](https://single-spa.js.org/docs/ecosystem#help-for-frameworks))
-2. Deploy microfrontends indepdently
+2. Deploy microfrontends independently
 3. Lazy load UI code to improve intital page load time.
 
 
@@ -12,21 +12,21 @@ A framework that allows to build mirofrontends. Its feature includes:
 Single SPA consists of 2 components
 
 1. Root Config: Orchestrates the loading of shell application in the browser
-2. Applications: The independently deployable frontends that can attach to the Root Config aka Orchestrator aka Shell
+2. Applications: The independently deployable frontends can attach to the Root Config (aka Orchestrator aka Shell) 
 
 ![Single_SPA_Architecture](./singespa_architecture.png)
 
 
 ### Single SPA Root
 
-> Synonyms to Root: Shell, Orchestrator
+> Synonymous to Root: Shell, Orchestrator
 
 SingleSPA is an orchestrator that 
 1. Renders the HTML page 
-2. Registering individual micro-frontend application using its Javascript engine (SystemJS or Module federation based)
+2. Registering individual micro-frontend application using its Javascript engine (SystemJS or Module-federation based)
 3. Handling Routing for different microfrontends
 
-From Codes perspective, the root requires 2 files
+From the code point-of-view, the root requires 2 files
 
 1. **Root config:**:  Has all the configuration with respect to route, app and other imports (CSS, etc). Finally, all these information is used to call `singleSpa.registerApplications`
 2. **Root HTML of SingleSPA**: HTML which has information to render the micro-frontend applications. 
@@ -98,7 +98,7 @@ System.import("@react-mf/styleguide").then(() => {layoutEngine.activate();start(
 </html>
 ```
 
-You can also add shared depdencies to reduce duplicate downloads of JS libraries. An example would be React-based dependencies which are used by at least 2 micro-frontend applications:
+You can also add shared depdencies to reduce duplicate downloads of Javascript libraries. An example would be React-based dependencies which are used by at least 2 micro-frontend applications:
 
 ```
 "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
@@ -119,7 +119,7 @@ In the root HTML, you can see it in action under the `<single-spa-router>` HTML 
 
 ### Micro-frontend Applications
 
-Every UI frontend application written in any framework (React, Angular, Vue, whatever JS hyped-up framework of the day is etc) and Module Bundler (Webpack, Parcel, Rollup, JS import etc) can be imported. The apps need to add Single-SPA config for registering the lifecycle methods (i.e Bootstrap, Mount and Unmount methods)
+Every UI frontend application can be written in any framework (React, Angular, Vue, whatever JS hyped-up framework of the day is etc) and Module Bundler (Webpack, Parcel, Rollup, JS import etc) can be imported. The apps need to add Single-SPA config for registering the lifecycle methods (i.e Bootstrap, Mount and Unmount methods)
 
 
 1. Bootstrap: Called once, just before mounting the registered microfrontend applicaiton.
@@ -161,7 +161,7 @@ Apart from application, SingleSPA has 2 other types of microfronend types:
 
 1. Parcel: These are used to have reusable UI components across multiple frameworks. Read more about Parcel [here](https://single-spa.js.org/docs/parcels-overview)
 
-> Note that Parcel is also a module bundler (like Webpack, Rollup) that is different from SingleSPA use of the Parcel concept.
+> Note that Parcel is also a module bundler (like Webpack, Rollup) that is different from SingleSPA use of its ***Parcel*** concept.
 
 2. Utility: Helper methods that cna be shared to have consistent functions, shared bunsiness logic   and removing code duplicacy.
 
@@ -181,13 +181,13 @@ Apart from application, SingleSPA has 2 other types of microfronend types:
 ### Unit test
 
 
-Can use the traditional unit test frameowkrs such as Jest, Enzyme etc for testing individual component.
+Can use the traditional unit test frameworks such as Jest, Enzyme etc for testing individual component.
 
 
 
 ### E2E test
 
-In Microfrontends, it is recommended to have focus on E2E tests as most unknowns arise during integrating different microfrontend. [Reference blog](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications])
+In Microfrontends, it is recommended to have focus on E2E tests as the most unknowns and regression arise during integrating different microfrontend. [Reference blog](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications])
 
 
 A recommended setup of E2E test would be:
